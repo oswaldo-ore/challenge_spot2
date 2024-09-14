@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Services;
+
+{{useStatements}}
+
+class {{name}}
+{
+    protected {{constructorParameters}};
+
+    public function __constructor({{constructorParameters}})
+    {
+        {{constructorAssignments}}
+    }
+}
