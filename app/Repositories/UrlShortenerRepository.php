@@ -11,6 +11,11 @@ class UrlShortenerRepository
         return UrlShortener::where('code', $code)->first();
     }
 
+    public function findById(Int $id)
+    {
+        return UrlShortener::find($id);
+    }
+
     public function existsByCode(String $code)
     {
         return UrlShortener::where('code', $code)->exists();
@@ -44,5 +49,10 @@ class UrlShortenerRepository
     public function findByOriginalUrl(String $url)
     {
         return UrlShortener::where('original_url', $url)->first();
+    }
+
+    public function getAllWithPaginate()
+    {
+        return UrlShortener::paginate(10);
     }
 }
