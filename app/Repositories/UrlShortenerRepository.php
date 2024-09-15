@@ -29,9 +29,8 @@ class UrlShortenerRepository
         return $code;
     }
 
-    public function createUrlShortener(String $url)
+    public function createUrlShortener(String $code,String $url)
     {
-        $code = $this->generateUrlShortenerUnique($url);
         return UrlShortener::create([
             'code' => $code,
             'original_url' => $url,

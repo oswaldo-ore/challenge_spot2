@@ -17,4 +17,10 @@ class UrlShortener extends Model
         'code',
         'original_url',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 }

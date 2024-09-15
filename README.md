@@ -164,16 +164,6 @@ php artisan test --filter=Feature
 - El proyecto está diseñado con separación de responsabilidades entre el frontend y backend, pero ambos están integrados mediante APIs RESTful.
 - Las pruebas han sido implementadas siguiendo la metodología **TDD** (Test-Driven Development).
 
-## Contribuciones
-
-Las contribuciones son bienvenidas. Para colaborar:
-
-1. Haz un fork del proyecto.
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza los cambios y haz un commit (`git commit -am 'Añadir nueva funcionalidad'`).
-4. Sube los cambios a tu fork (`git push origin feature/nueva-funcionalidad`).
-5. Abre un Pull Request.
-
 ## Licencia
 
 Este proyecto está bajo la licencia MIT.

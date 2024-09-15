@@ -16,7 +16,9 @@ class UrlShortenerService
 
     public function createUrlShortener(String $url)
     {
-        return $this->urlShortenerRepository->createUrlShortener($url);
+        validateUrl($url);
+        $code = $this->urlShortenerRepository->generateUrlShortenerUnique($url);
+        return $this->urlShortenerRepository->createUrlShortener($code,$url);
     }
 
     public function updateUrlShortener(String $code, String $url)
@@ -31,14 +33,18 @@ class UrlShortenerService
         return $this->urlShortenerRepository->updateUrlShortener($urlShortener, $url);
     }
 
-    public function getUrlShortener(String $code)
+    public function findByCode(String $code)
     {
-        return $this->urlShortenerRepository->findByCode($code);
+        $urlShortener = $this->urlShortenerRepository->findByCode($code);
+        if ($urlShortener === null) throw new \Exception('Url not found');
+        return $urlShortener;
     }
 
     public function getUrlShortenerByOriginalUrl(String $url)
     {
-        return $this->urlShortenerRepository->findByOriginalUrl($url);
+        $urlShortener = $this->urlShortenerRepository->findByOriginalUrl($url);
+        if ($urlShortener === null) throw new \Exception('Url not found');
+        return $urlShortener;
     }
 
     public function getAllWithPaginate()
@@ -52,6 +58,15 @@ class UrlShortenerService
 
     public function findById(Int $id)
     {
-        return $this->urlShortenerRepository->findById($id);
+        $urlShortener = $this->urlShortenerRepository->findById($id);
+        if ($urlShortener === null) throw new \Exception('Url not found');
+        return $urlShortener;
+    }
+
+    public function deleteById(Int $id)
+    {
+        $urlShortener = $this->urlShortenerRepository->findById($id);
+        if ($urlShortener === null) throw new \Exception('Url not found');
+        $urlShortener->delete();
     }
 }

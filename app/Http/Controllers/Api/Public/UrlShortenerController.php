@@ -199,13 +199,10 @@ class UrlShortenerController extends Controller
      * )
      */
 
-    public function show($id)
+    public function show($code)
     {
         try {
-            $urlShortener = $this->urlShortenerService->findById($id);
-            if (!$urlShortener) {
-                return ResponseHandler::error(Response::HTTP_BAD_REQUEST, 'URL not found');
-            }
+            $urlShortener = $this->urlShortenerService->findByCode($code);
             return ResponseHandler::success($urlShortener, 'URL found');
         } catch (\Throwable $th) {
             return ResponseHandler::error($th->getCode(), $th->getMessage(), null);
