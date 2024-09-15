@@ -7,9 +7,8 @@ Este es un acortador de URLs simple construido con Laravel. A continuación se p
 
 - **PHP 8.x**
 - **Laravel 10.x**
-- **Composer**
+- **Composer 2.4.1**
 - **MariaDb MySQL 10.4.25**
-- **Node.js** (opcional, solo si necesitas compilar assets)
 
 ## Instalación Local
 
@@ -63,7 +62,18 @@ Este es un acortador de URLs simple construido con Laravel. A continuación se p
      DB_PASSWORD=
      ```
 
-### 4. Genera las claves para ambos entornos
+### 4. Genera las base de datos por comando
+
+Ejecuta los siguientes comandos para crear las bases de datos de produccion y testing:
+
+```bash
+php artisan db:create  # Crea la base de datos para el entorno de produccion
+php artisan db:create --env=testing  # Crea la base de datos para el entorno de pruebas
+```
+
+---
+
+### 5. Genera las claves para ambos entornos
 
 - **Clave para el entorno de desarrollo**:
 
@@ -77,7 +87,7 @@ Este es un acortador de URLs simple construido con Laravel. A continuación se p
    php artisan key:generate --env=testing
    ```
 
-### 5. Ejecuta las migraciones
+### 6. Ejecuta las migraciones
 
 - **Migraciones para el entorno de desarrollo**:
 
@@ -91,7 +101,7 @@ Este es un acortador de URLs simple construido con Laravel. A continuación se p
    php artisan migrate --env=testing
    ```
 
-### 6. (Opcional) Rellena la base de datos con datos de prueba
+### 7. (Opcional) Rellena la base de datos con datos de prueba
 
 - **Para desarrollo**:
 
@@ -105,7 +115,7 @@ Este es un acortador de URLs simple construido con Laravel. A continuación se p
    php artisan db:seed --env=testing
    ```
 
-### 7. Inicia el servidor de desarrollo
+### 8. Inicia el servidor de desarrollo
 
    ```bash
    php artisan serve
