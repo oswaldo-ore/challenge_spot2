@@ -1,169 +1,157 @@
-# URL Shortener
 
-Este es un proyecto de acortador de URLs construido con **Laravel** en el backend y **React.js** en el frontend. El sistema permite acortar URLs, listar las URLs acortadas y realizar otras operaciones CRUD sobre las URLs.
+# URL Shortener API - Guía de Inicio Rápido
 
-## Características
+Este es un acortador de URLs simple construido con Laravel. A continuación se presenta una guía de inicio rápido para instalar, configurar y ejecutar la aplicación tanto localmente como en la nube.
 
-- Acortar URLs largas a códigos únicos de hasta 8 caracteres.
-- Listar todas las URLs acortadas.
-- Actualizar y eliminar URLs.
-- APIs RESTful con respuestas JSON para operaciones CRUD.
-- Pruebas unitarias y de características implementadas usando **Pest**.
-- Arquitectura limpia con separación de responsabilidades entre frontend y backend.
+## Requisitos
 
-## Tecnologías Utilizadas
+- **PHP 8.x**
+- **Laravel 10.x**
+- **Composer**
+- **MariaDb MySQL 10.4.25**
+- **Node.js** (opcional, solo si necesitas compilar assets)
 
-- **Laravel** (Backend)
-- **React.js** (Frontend)
-- **MySQL** (Base de datos)
-- **Pest PHP** (Framework de pruebas)
-- **Factories** y **Seeders** para generar datos de prueba
+## Instalación Local
 
-## Requisitos del Sistema
+### 1. Clona el repositorio
 
-- PHP >= 8.1
-- Composer >= 2.4.1
-- Node.js >= v16.16.0
-- MySQL (Mariadb) = 10.4.25
-- Laravel >= 10.10
-- React.js
+   ```bash
+   git clone https://github.com/oswaldo-ore/challenge_spot2.git
+   cd challenge_spot2
+   ```
 
-## Instalación
+### 2. Instala las dependencias
 
-### Clonar el Repositorio
+   ```bash
+   composer install
+   ```
 
-```bash
-git clone https://github.com/usuario/url-shortener.git
-cd url-shortener
-```
+### 3. Configura los archivos de entorno
 
-### Backend (Laravel)
+- Copia el archivo `.env.example` a `.env`:
 
-1. Instalar dependencias de PHP:
+   ```bash
+   cp .env.example .env
+   ```
 
-    ```bash
-    composer install
-    ```
+- Copia el archivo `.env.testing.example` para pruebas:
 
-2. Crear el archivo `.env`:
+   ```bash
+   cp .env.testing.example .env.testing
+   ```
 
-    ```bash
-    cp .env.example .env
-    ```
+- Configura la conexión a las bases de datos:
+  - **Base de datos de desarrollo** en `.env`:
 
-3. Configurar el archivo `.env` con los detalles de la base de datos y otros parámetros del entorno (como `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, etc.).
+     ```bash
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=challenge_prod
+     DB_USERNAME=root
+     DB_PASSWORD=
+     ```
 
-4. Generar la clave de la aplicación:
+  - **Base de datos de pruebas** en `.env.testing`:
 
-    ```bash
-    php artisan key:generate
-    ```
+     ```bash
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=challenge_test
+     DB_USERNAME=root
+     DB_PASSWORD=
+     ```
 
-5. Crear la base de datos:
+### 4. Genera las claves para ambos entornos
 
-    ```bash
-    php artisan db:create
-    ```
+- **Clave para el entorno de desarrollo**:
 
-6. Migrar las tablas de la base de datos:
+   ```bash
+   php artisan key:generate
+   ```
 
-    ```bash
-    php artisan migrate
-    ```
+- **Clave para el entorno de pruebas**:
 
-7. (Opcional) Ejecutar los seeders para generar datos de prueba:
+   ```bash
+   php artisan key:generate --env=testing
+   ```
 
-    ```bash
-    php artisan db:seed
-    ```
+### 5. Ejecuta las migraciones
 
-### Frontend (React.js)
+- **Migraciones para el entorno de desarrollo**:
 
-1. Ir al directorio del frontend:
+   ```bash
+   php artisan migrate
+   ```
 
-    ```bash
-    cd frontend
-    ```
+- **Migraciones para el entorno de pruebas**:
 
-2. Instalar las dependencias de Node.js:
+   ```bash
+   php artisan migrate --env=testing
+   ```
 
-    ```bash
-    npm install
-    ```
+### 6. (Opcional) Rellena la base de datos con datos de prueba
 
-3. Iniciar el servidor de desarrollo:
+- **Para desarrollo**:
 
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   php artisan db:seed
+   ```
 
-## Uso
+- **Para pruebas**:
 
-### Iniciar el Servidor
+   ```bash
+   php artisan db:seed --env=testing
+   ```
 
-Inicia el servidor de desarrollo de Laravel:
+### 7. Inicia el servidor de desarrollo
 
-```bash
-php artisan serve
-```
+   ```bash
+   php artisan serve
+   ```
 
-Ahora, puedes acceder a la aplicación en [http://localhost:8000](http://localhost:8000).
+La aplicación estará disponible en `http://localhost:8000`.
 
-### Acortar una URL
+## Documentación de las Decisiones de Diseño
 
-Envía una solicitud `POST` a `/api/admin/url-shortener` con el siguiente formato de datos:
+### Decisión 1: Uso de Laravel para la API
 
-```json
-{
-    "url": "https://www.example.com"
-}
-```
+Laravel fue elegido por su arquitectura robusta y por ser un framework bien soportado en la comunidad PHP. Proporciona controladores RESTful, un ORM (Eloquent), y soporte para la validación, middleware, y autenticación, lo cual encaja perfectamente en los requisitos del negocio.
 
-### Listar URLs Acortadas
+### Decisión 2: Separación de Responsabilidades con Servicios y Repositorios
 
-Envía una solicitud `GET` a `/api/admin/url-shortener` para obtener la lista de URLs acortadas.
+El diseño sigue el patrón de servicios y repositorios para garantizar que la lógica de negocio esté separada de la lógica de acceso a la base de datos. Esto facilita el mantenimiento del código y permite realizar pruebas unitarias y de integración de forma independiente.
+
+- **Servicios**: Gestionan la lógica de negocio, como la validación de URLs y la generación de códigos únicos.
+- **Repositorios**: Encapsulan el acceso a la base de datos, facilitando la interacción con el modelo `UrlShortener` sin exponer la lógica SQL directamente en los controladores.
+
+### Decisión 3: Pruebas y Calidad del Código
+
+Se implementaron pruebas unitarias y de características (feature tests) utilizando **PHPUnit**. La metodología **TDD (Test-Driven Development)** fue utilizada para asegurar que el código cumple con los requisitos funcionales antes de ser implementado.
+
+### Objetivo Técnico: Escalabilidad
+
+El diseño modular, junto con el uso de repositorios y servicios, facilita la escalabilidad. Si se necesitan agregar más funcionalidades, estas se pueden integrar sin afectar el código existente, manteniendo una arquitectura limpia.
+
+---
 
 ## Pruebas
 
-Este proyecto tiene pruebas unitarias y de características utilizando **Pest**.
-
-### Ejecutar Pruebas
-
-Para ejecutar todas las pruebas:
+### Para ejecutar todas las pruebas
 
 ```bash
 php artisan test
 ```
 
-### Ejecutar Pruebas Unitarias
+### Para ejecutar solo las pruebas unitarias
 
 ```bash
-php artisan test --filter=Unit
+php artisan test --testsuite=Unit
 ```
 
-### Ejecutar Pruebas de Características
+### Para ejecutar solo las pruebas de características
 
 ```bash
-php artisan test --filter=Feature
+php artisan test --testsuite=Feature
 ```
-
-## Estructura del Proyecto
-
-- **app/Models**: Modelos de base de datos.
-- **app/Services**: Manejan la lógica de negocio, orquestando procesos y operaciones sin acceder directamente a la base de datos.
-- **app/Repositories**: Repositorios que manejan la interacción con la base de datos y encapsulan las consultas para mayor flexibilidad.
-- **app/Http/Controllers**: Controladores de las APIs y funcionalidades.
-- **database/factories**: Factories para la generación de datos de prueba.
-- **tests/Unit**: Pruebas unitarias.
-- **tests/Feature**: Pruebas de características.
-- **frontend/**: Carpeta del frontend desarrollado con React.js.
-
-## Consideraciones
-
-- Las URL acortadas tienen un máximo de 8 caracteres y son generadas de forma aleatoria.
-- El proyecto está diseñado con separación de responsabilidades entre el frontend y backend, pero ambos están integrados mediante APIs RESTful.
-- Las pruebas han sido implementadas siguiendo la metodología **TDD** (Test-Driven Development).
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT.
