@@ -46,6 +46,10 @@ class UrlShortenerService
         return $this->urlShortenerRepository->getAllWithPaginate();
     }
 
+    public function getAll(){
+        return $this->urlShortenerRepository->getAll();
+    }
+
     public function findById(Int $id)
     {
         return $this->urlShortenerRepository->findById($id);

@@ -55,4 +55,9 @@ class UrlShortenerRepository
     {
         return UrlShortener::paginate(10);
     }
+
+    public function getAll()
+    {
+        return UrlShortener::all();
+    }
 }

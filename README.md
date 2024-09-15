@@ -1,66 +1,179 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# URL Shortener
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este es un proyecto de acortador de URLs construido con **Laravel** en el backend y **React.js** en el frontend. El sistema permite acortar URLs, listar las URLs acortadas y realizar otras operaciones CRUD sobre las URLs.
 
-## About Laravel
+## Características
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Acortar URLs largas a códigos únicos de hasta 8 caracteres.
+- Listar todas las URLs acortadas.
+- Actualizar y eliminar URLs.
+- APIs RESTful con respuestas JSON para operaciones CRUD.
+- Pruebas unitarias y de características implementadas usando **Pest**.
+- Arquitectura limpia con separación de responsabilidades entre frontend y backend.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologías Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel** (Backend)
+- **React.js** (Frontend)
+- **MySQL** (Base de datos)
+- **Pest PHP** (Framework de pruebas)
+- **Factories** y **Seeders** para generar datos de prueba
 
-## Learning Laravel
+## Requisitos del Sistema
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP >= 8.1
+- Composer >= 2.4.1
+- Node.js >= v16.16.0
+- MySQL (Mariadb) = 10.4.25
+- Laravel >= 10.10
+- React.js
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Clonar el Repositorio
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/usuario/url-shortener.git
+cd url-shortener
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Backend (Laravel)
 
-### Premium Partners
+1. Instalar dependencias de PHP:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```bash
+    composer install
+    ```
 
-## Contributing
+2. Crear el archivo `.env`:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Code of Conduct
+3. Configurar el archivo `.env` con los detalles de la base de datos y otros parámetros del entorno (como `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, etc.).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Generar la clave de la aplicación:
 
-## Security Vulnerabilities
+    ```bash
+    php artisan key:generate
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Crear la base de datos:
 
-## License
+    ```bash
+    php artisan db:create
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6. Migrar las tablas de la base de datos:
+
+    ```bash
+    php artisan migrate
+    ```
+
+7. (Opcional) Ejecutar los seeders para generar datos de prueba:
+
+    ```bash
+    php artisan db:seed
+    ```
+
+### Frontend (React.js)
+
+1. Ir al directorio del frontend:
+
+    ```bash
+    cd frontend
+    ```
+
+2. Instalar las dependencias de Node.js:
+
+    ```bash
+    npm install
+    ```
+
+3. Iniciar el servidor de desarrollo:
+
+    ```bash
+    npm run dev
+    ```
+
+## Uso
+
+### Iniciar el Servidor
+
+Inicia el servidor de desarrollo de Laravel:
+
+```bash
+php artisan serve
+```
+
+Ahora, puedes acceder a la aplicación en [http://localhost:8000](http://localhost:8000).
+
+### Acortar una URL
+
+Envía una solicitud `POST` a `/api/admin/url-shortener` con el siguiente formato de datos:
+
+```json
+{
+    "url": "https://www.example.com"
+}
+```
+
+### Listar URLs Acortadas
+
+Envía una solicitud `GET` a `/api/admin/url-shortener` para obtener la lista de URLs acortadas.
+
+## Pruebas
+
+Este proyecto tiene pruebas unitarias y de características utilizando **Pest**.
+
+### Ejecutar Pruebas
+
+Para ejecutar todas las pruebas:
+
+```bash
+php artisan test
+```
+
+### Ejecutar Pruebas Unitarias
+
+```bash
+php artisan test --filter=Unit
+```
+
+### Ejecutar Pruebas de Características
+
+```bash
+php artisan test --filter=Feature
+```
+
+## Estructura del Proyecto
+
+- **app/Models**: Modelos de base de datos.
+- **app/Services**: Manejan la lógica de negocio, orquestando procesos y operaciones sin acceder directamente a la base de datos.
+- **app/Repositories**: Repositorios que manejan la interacción con la base de datos y encapsulan las consultas para mayor flexibilidad.
+- **app/Http/Controllers**: Controladores de las APIs y funcionalidades.
+- **database/factories**: Factories para la generación de datos de prueba.
+- **tests/Unit**: Pruebas unitarias.
+- **tests/Feature**: Pruebas de características.
+- **frontend/**: Carpeta del frontend desarrollado con React.js.
+
+## Consideraciones
+
+- Las URL acortadas tienen un máximo de 8 caracteres y son generadas de forma aleatoria.
+- El proyecto está diseñado con separación de responsabilidades entre el frontend y backend, pero ambos están integrados mediante APIs RESTful.
+- Las pruebas han sido implementadas siguiendo la metodología **TDD** (Test-Driven Development).
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Para colaborar:
+
+1. Haz un fork del proyecto.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza los cambios y haz un commit (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Sube los cambios a tu fork (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT.

@@ -75,7 +75,7 @@ class UrlShortenerController extends Controller
     public function index(Request $request)
     {
         try {
-            $data = $this->urlShortenerService->getAllWithPaginate();
+            $data = $this->urlShortenerService->getAll();
             return ResponseHandler::success($data, 'List of shortened URLs');
         } catch (\Throwable $th) {
             return ResponseHandler::error($th->getCode(), $th->getMessage(), null);
