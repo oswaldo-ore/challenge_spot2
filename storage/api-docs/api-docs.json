@@ -57,14 +57,6 @@
                                                             "original_url": {
                                                                 "type": "string",
                                                                 "example": "https://www.google.com"
-                                                            },
-                                                            "created_at": {
-                                                                "type": "string",
-                                                                "example": "2024-09-14T20:54:12.000000Z"
-                                                            },
-                                                            "updated_at": {
-                                                                "type": "string",
-                                                                "example": "2024-09-14T20:54:12.000000Z"
                                                             }
                                                         },
                                                         "type": "object"
@@ -159,14 +151,6 @@
                                                 "original_url": {
                                                     "type": "string",
                                                     "example": "https://www.google.com"
-                                                },
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "example": "2024-09-14T20:54:12.000000Z"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "example": "2024-09-14T20:54:12.000000Z"
                                                 }
                                             },
                                             "type": "object"
@@ -189,7 +173,7 @@
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "URL is required"
+                                            "example": "URL is required | URL is not valid"
                                         },
                                         "data": {
                                             "type": "string",
@@ -283,140 +267,6 @@
                                                 "updated_at": {
                                                     "type": "string",
                                                     "example": "2024-09-14T20:54:12.000000Z"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "URL not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 400
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "URL not found"
-                                        },
-                                        "data": {
-                                            "type": "string",
-                                            "example": null
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 500
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "An unexpected error occurred"
-                                        },
-                                        "data": {
-                                            "type": "string",
-                                            "example": null
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "URL Shortener"
-                ],
-                "summary": "Update a shortened URL by ID",
-                "description": "Updates the original URL for a shortened URL by its unique ID",
-                "operationId": "400f9c0436d232c60a582aa67c6b2d5d",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "The unique ID of the shortened URL",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "New URL to replace the original shortened URL",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "url"
-                                ],
-                                "properties": {
-                                    "url": {
-                                        "type": "string",
-                                        "example": "https://www.example.com"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "URL updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "code": {
-                                            "type": "integer",
-                                            "example": 200
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "URL updated successfully"
-                                        },
-                                        "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "code": {
-                                                    "type": "string",
-                                                    "example": "xmQ27qAY"
-                                                },
-                                                "original_url": {
-                                                    "type": "string",
-                                                    "example": "https://www.example.com"
-                                                },
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "example": "2024-09-14T20:54:12.000000Z"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "example": "2024-09-15T12:34:56.000000Z"
                                                 }
                                             },
                                             "type": "object"

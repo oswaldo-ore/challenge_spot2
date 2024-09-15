@@ -204,67 +204,67 @@ class UrlShortenerController extends Controller
             return ResponseHandler::error($th->getCode(), $th->getMessage(), null);
         }
     }
-    /**
-     * @OA\Put(
-     *     path="/api/admin/url-shortener/{id}",
-     *     summary="Update a shortened URL by ID",
-     *     description="Updates the original URL for a shortened URL by its unique ID",
-     *     tags={"URL Shortener"},
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         description="The unique ID of the shortened URL",
-     *         @OA\Schema(type="integer")
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         description="New URL to replace the original shortened URL",
-     *         @OA\JsonContent(
-     *             required={"url"},
-     *             @OA\Property(property="url", type="string", example="https://www.example.com")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="URL updated successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="code", type="integer", example=200),
-     *             @OA\Property(property="message", type="string", example="URL updated successfully"),
-     *             @OA\Property(
-     *                 property="data",
-     *                 type="object",
-     *                 @OA\Property(property="id", type="integer", example=1),
-     *                 @OA\Property(property="code", type="string", example="xmQ27qAY"),
-     *                 @OA\Property(property="original_url", type="string", example="https://www.example.com"),
-     *                 @OA\Property(property="created_at", type="string", example="2024-09-14T20:54:12.000000Z"),
-     *                 @OA\Property(property="updated_at", type="string", example="2024-09-15T12:34:56.000000Z")
-     *             )
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="URL not found",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="code", type="integer", example=400),
-     *             @OA\Property(property="message", type="string", example="URL not found"),
-     *             @OA\Property(property="data", type="string", example=null)
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="code", type="integer", example=500),
-     *             @OA\Property(property="message", type="string", example="An unexpected error occurred"),
-     *             @OA\Property(property="data", type="string", example=null)
-     *         )
-     *     )
-     * )
-     */
+    // /**
+    //  * @OA\Put(
+    //  *     path="/api/admin/url-shortener/{id}",
+    //  *     summary="Update a shortened URL by ID",
+    //  *     description="Updates the original URL for a shortened URL by its unique ID",
+    //  *     tags={"URL Shortener"},
+    //  *     @OA\Parameter(
+    //  *         name="id",
+    //  *         in="path",
+    //  *         required=true,
+    //  *         description="The unique ID of the shortened URL",
+    //  *         @OA\Schema(type="integer")
+    //  *     ),
+    //  *     @OA\RequestBody(
+    //  *         required=true,
+    //  *         description="New URL to replace the original shortened URL",
+    //  *         @OA\JsonContent(
+    //  *             required={"url"},
+    //  *             @OA\Property(property="url", type="string", example="https://www.example.com")
+    //  *         )
+    //  *     ),
+    //  *     @OA\Response(
+    //  *         response=200,
+    //  *         description="URL updated successfully",
+    //  *         @OA\JsonContent(
+    //  *             type="object",
+    //  *             @OA\Property(property="code", type="integer", example=200),
+    //  *             @OA\Property(property="message", type="string", example="URL updated successfully"),
+    //  *             @OA\Property(
+    //  *                 property="data",
+    //  *                 type="object",
+    //  *                 @OA\Property(property="id", type="integer", example=1),
+    //  *                 @OA\Property(property="code", type="string", example="xmQ27qAY"),
+    //  *                 @OA\Property(property="original_url", type="string", example="https://www.example.com"),
+    //  *                 @OA\Property(property="created_at", type="string", example="2024-09-14T20:54:12.000000Z"),
+    //  *                 @OA\Property(property="updated_at", type="string", example="2024-09-15T12:34:56.000000Z")
+    //  *             )
+    //  *         )
+    //  *     ),
+    //  *     @OA\Response(
+    //  *         response=400,
+    //  *         description="URL not found",
+    //  *         @OA\JsonContent(
+    //  *             type="object",
+    //  *             @OA\Property(property="code", type="integer", example=400),
+    //  *             @OA\Property(property="message", type="string", example="URL not found"),
+    //  *             @OA\Property(property="data", type="string", example=null)
+    //  *         )
+    //  *     ),
+    //  *     @OA\Response(
+    //  *         response=500,
+    //  *         description="Internal server error",
+    //  *         @OA\JsonContent(
+    //  *             type="object",
+    //  *             @OA\Property(property="code", type="integer", example=500),
+    //  *             @OA\Property(property="message", type="string", example="An unexpected error occurred"),
+    //  *             @OA\Property(property="data", type="string", example=null)
+    //  *         )
+    //  *     )
+    //  * )
+    //  */
     public function update(UrlShortenerControllerRequestUpdate $request, $id)
     {
         try {
