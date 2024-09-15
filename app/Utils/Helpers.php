@@ -10,5 +10,5 @@ function makeDirectory(String $path)
 
 function generateRandomCode()
 {
-    return Str::random(8);
+    return strtolower(Str::random(8));
 }
