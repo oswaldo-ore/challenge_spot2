@@ -23,6 +23,5 @@ Route::group(['prefix' => 'admin/url-shortener'], function () {
     Route::get('/', [UrlShortenerController::class,'index']);
     Route::post('/', [UrlShortenerController::class,'store']);
     Route::get('/{id}', [UrlShortenerController::class,'show']);
-    Route::put('/{id}', [UrlShortenerController::class,'update']);
     Route::delete('/{id}', [UrlShortenerController::class,'destroy']);
 });
