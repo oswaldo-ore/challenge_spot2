@@ -19,6 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/api/documentation', function () {
+    return view('swagger-l5::index');
+});
 Route::group(['prefix' => 'admin/url-shortener'], function () {
     Route::get('/', [UrlShortenerController::class,'index']);
     Route::post('/', [UrlShortenerController::class,'store']);
