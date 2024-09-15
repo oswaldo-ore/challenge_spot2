@@ -31,6 +31,7 @@ class ResponseHandler
         $statusCode = $code == 0 ? Response::HTTP_INTERNAL_SERVER_ERROR : $code;
         if ($statusCode > Response::HTTP_NETWORK_AUTHENTICATION_REQUIRED) {
             $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+            $message = 'An unexpected error occurred';
         }
 
         if (is_string($statusCode)) {

@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\UrlShortenerRepository;
-
+use Illuminate\Http\Response;
 
 class UrlShortenerService
 {
@@ -36,14 +36,14 @@ class UrlShortenerService
     public function findByCode(String $code)
     {
         $urlShortener = $this->urlShortenerRepository->findByCode($code);
-        if ($urlShortener === null) throw new \Exception('Url not found');
+        if ($urlShortener === null) throw new \Exception('Url not found', Response::HTTP_BAD_REQUEST);
         return $urlShortener;
     }
 
     public function getUrlShortenerByOriginalUrl(String $url)
     {
         $urlShortener = $this->urlShortenerRepository->findByOriginalUrl($url);
-        if ($urlShortener === null) throw new \Exception('Url not found');
+        if ($urlShortener === null) throw new \Exception('Url not found', Response::HTTP_BAD_REQUEST);
         return $urlShortener;
     }
 
@@ -59,14 +59,14 @@ class UrlShortenerService
     public function findById(Int $id)
     {
         $urlShortener = $this->urlShortenerRepository->findById($id);
-        if ($urlShortener === null) throw new \Exception('Url not found');
+        if ($urlShortener === null) throw new \Exception('Url not found', Response::HTTP_BAD_REQUEST);
         return $urlShortener;
     }
 
     public function deleteById(Int $id)
     {
         $urlShortener = $this->urlShortenerRepository->findById($id);
-        if ($urlShortener === null) throw new \Exception('Url not found');
+        if ($urlShortener === null) throw new \Exception('Url not found', Response::HTTP_BAD_REQUEST);
         $urlShortener->delete();
     }
 }

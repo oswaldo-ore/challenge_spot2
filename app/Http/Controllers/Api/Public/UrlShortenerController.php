@@ -52,9 +52,7 @@ class UrlShortenerController extends Controller
      *                     @OA\Items(
      *                         @OA\Property(property="id", type="integer", example=1),
      *                         @OA\Property(property="code", type="string", example="xmQ27qAY"),
-     *                         @OA\Property(property="original_url", type="string", example="https://www.google.com"),
-     *                         @OA\Property(property="created_at", type="string", example="2024-09-14T20:54:12.000000Z"),
-     *                         @OA\Property(property="updated_at", type="string", example="2024-09-14T20:54:12.000000Z")
+     *                         @OA\Property(property="original_url", type="string", example="https://www.google.com")
      *                     )
      *                 )
      *             )
@@ -78,7 +76,7 @@ class UrlShortenerController extends Controller
             $data = $this->urlShortenerService->getAll();
             return ResponseHandler::success($data, 'List of shortened URLs');
         } catch (\Throwable $th) {
-            return ResponseHandler::error($th->getCode(), $th->getMessage(), null);
+            return ResponseHandler::error(500, 'An unexpected error occurred', null);
         }
     }
 
@@ -107,9 +105,7 @@ class UrlShortenerController extends Controller
      *                 type="object",
      *                 @OA\Property(property="id", type="integer", example=1),
      *                 @OA\Property(property="code", type="string", example="xmQ27qAY"),
-     *                 @OA\Property(property="original_url", type="string", example="https://www.google.com"),
-     *                 @OA\Property(property="created_at", type="string", example="2024-09-14T20:54:12.000000Z"),
-     *                 @OA\Property(property="updated_at", type="string", example="2024-09-14T20:54:12.000000Z")
+     *                 @OA\Property(property="original_url", type="string", example="https://www.google.com")
      *             )
      *         )
      *     ),
@@ -119,7 +115,7 @@ class UrlShortenerController extends Controller
      *         @OA\JsonContent(
      *             type="object",
      *             @OA\Property(property="code", type="integer", example=400),
-     *             @OA\Property(property="message", type="string", example="URL is required"),
+     *             @OA\Property(property="message", type="string", example="URL is required | URL is not valid"),
      *             @OA\Property(property="data", type="string", example=null)
      *         )
      *     ),
