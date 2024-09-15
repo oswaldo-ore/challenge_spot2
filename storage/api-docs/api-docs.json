@@ -212,22 +212,22 @@
                 }
             }
         },
-        "/api/admin/url-shortener/{id}": {
+        "/api/admin/url-shortener/{code}": {
             "get": {
                 "tags": [
                     "URL Shortener"
                 ],
-                "summary": "Get details of a shortened URL by ID",
-                "description": "Returns the details of a shortened URL by its unique ID",
-                "operationId": "94f0332de06eed0fe03a8ab9e8da7f02",
+                "summary": "Get details of a shortened URL by CODE",
+                "description": "Returns the details of a shortened URL by its unique CODE",
+                "operationId": "45c2231f2619919b17872a4aadc2207c",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "code",
                         "in": "path",
-                        "description": "The unique ID of the shortened URL",
+                        "description": "The unique CODE of the shortened URL",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -326,7 +326,9 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/api/admin/url-shortener/{id}": {
             "delete": {
                 "tags": [
                     "URL Shortener"

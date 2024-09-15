@@ -143,16 +143,16 @@ class UrlShortenerController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/admin/url-shortener/{id}",
-     *     summary="Get details of a shortened URL by ID",
-     *     description="Returns the details of a shortened URL by its unique ID",
+     *     path="/api/admin/url-shortener/{code}",
+     *     summary="Get details of a shortened URL by CODE",
+     *     description="Returns the details of a shortened URL by its unique CODE",
      *     tags={"URL Shortener"},
      *     @OA\Parameter(
-     *         name="id",
+     *         name="code",
      *         in="path",
      *         required=true,
-     *         description="The unique ID of the shortened URL",
-     *         @OA\Schema(type="integer")
+     *         description="The unique CODE of the shortened URL",
+     *         @OA\Schema(type="string")
      *     ),
      *     @OA\Response(
      *         response=200,
