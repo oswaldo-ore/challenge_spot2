@@ -206,16 +206,16 @@ class UrlShortenerController extends Controller
     }
     // /**
     //  * @OA\Put(
-    //  *     path="/api/admin/url-shortener/{id}",
-    //  *     summary="Update a shortened URL by ID",
-    //  *     description="Updates the original URL for a shortened URL by its unique ID",
+    //  *     path="/api/admin/url-shortener/{code}",
+    //  *     summary="Update a shortened URL by CODE",
+    //  *     description="Updates the original URL for a shortened URL by its unique CODE",
     //  *     tags={"URL Shortener"},
     //  *     @OA\Parameter(
-    //  *         name="id",
+    //  *         name="code",
     //  *         in="path",
     //  *         required=true,
-    //  *         description="The unique ID of the shortened URL",
-    //  *         @OA\Schema(type="integer")
+    //  *         description="The unique code of the shortened URL",
+    //  *         @OA\Schema(type="string")
     //  *     ),
     //  *     @OA\RequestBody(
     //  *         required=true,
@@ -277,15 +277,15 @@ class UrlShortenerController extends Controller
     }
     /**
      * @OA\Delete(
-     *     path="/api/admin/url-shortener/{code}",
-     *     summary="Delete a shortened URL by CODE",
-     *     description="Deletes a shortened URL by its unique CODE",
+     *     path="/api/admin/url-shortener/{id}",
+     *     summary="Delete a shortened URL by ID",
+     *     description="Deletes a shortened URL by its unique ID",
      *     tags={"URL Shortener"},
      *     @OA\Parameter(
-     *         name="code",
+     *         name="id",
      *         in="path",
      *         required=true,
-     *         description="The unique CODE of the shortened URL",
+     *         description="The unique ID of the shortened URL",
      *         @OA\Schema(type="integer")
      *     ),
      *     @OA\Response(
@@ -293,7 +293,7 @@ class UrlShortenerController extends Controller
      *         description="URL deleted successfully",
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="code", type="string", example=200),
+     *             @OA\Property(property="code", type="integer", example=200),
      *             @OA\Property(property="message", type="string", example="URL deleted successfully"),
      *             @OA\Property(property="data", type="string", example=null)
      *         )
@@ -303,7 +303,7 @@ class UrlShortenerController extends Controller
      *         description="URL not found",
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="code", type="string", example=400),
+     *             @OA\Property(property="code", type="integer", example=400),
      *             @OA\Property(property="message", type="string", example="URL not found"),
      *             @OA\Property(property="data", type="string", example=null)
      *         )
@@ -313,7 +313,7 @@ class UrlShortenerController extends Controller
      *         description="Internal server error",
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="code", type="string", example=500),
+     *             @OA\Property(property="code", type="integer", example=500),
      *             @OA\Property(property="message", type="string", example="An unexpected error occurred"),
      *             @OA\Property(property="data", type="string", example=null)
      *         )

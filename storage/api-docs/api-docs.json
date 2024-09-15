@@ -326,21 +326,19 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/admin/url-shortener/{code}": {
+            },
             "delete": {
                 "tags": [
                     "URL Shortener"
                 ],
-                "summary": "Delete a shortened URL by CODE",
-                "description": "Deletes a shortened URL by its unique CODE",
-                "operationId": "349ca23f21ec7b87cb2f49f2efc17aaf",
+                "summary": "Delete a shortened URL by ID",
+                "description": "Deletes a shortened URL by its unique ID",
+                "operationId": "438c0dd206819c035faecb058e97f7b3",
                 "parameters": [
                     {
-                        "name": "code",
+                        "name": "id",
                         "in": "path",
-                        "description": "The unique CODE of the shortened URL",
+                        "description": "The unique ID of the shortened URL",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -355,7 +353,7 @@
                                 "schema": {
                                     "properties": {
                                         "code": {
-                                            "type": "string",
+                                            "type": "integer",
                                             "example": 200
                                         },
                                         "message": {
@@ -379,7 +377,7 @@
                                 "schema": {
                                     "properties": {
                                         "code": {
-                                            "type": "string",
+                                            "type": "integer",
                                             "example": 400
                                         },
                                         "message": {
@@ -403,7 +401,7 @@
                                 "schema": {
                                     "properties": {
                                         "code": {
-                                            "type": "string",
+                                            "type": "integer",
                                             "example": 500
                                         },
                                         "message": {
