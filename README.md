@@ -15,8 +15,8 @@ This is a simple URL shortener built with Laravel. Below is a quick start guide 
 ### 1. Clone the repository
 
    ```bash
-   git clone https://github.com/oswaldo-ore/challenge_spot2.git
-   cd challenge_spot2
+   git clone git@github.com:oswaldo-ore/laravel_challenge_spot.git
+   cd laravel_challenge_spot
    ```
 
 ### 2. Install dependencies
@@ -137,8 +137,8 @@ We deployed this application on an Oracle instance using **aaPanel** and linked 
 ### 2. Clone the project
 
 ```bash
-git clone https://github.com/oswaldo-ore/challenge_spot2.git
-cd challenge_spot2
+git clone https://github.com/oswaldo-ore/laravel_challenge_spot.git
+cd laravel_challenge_spot
 ```
 
 ### 3. Set up environment files
@@ -189,6 +189,32 @@ This rule ensures that all non-existent file requests are routed to the `index.p
 Once everything is configured, ensure Nginx is properly set up to serve the Laravel application.
 
 Your application is now running on the cloud, accessible via the domain linked from Namecheap.
+
+---
+
+## Custom Artisan Commands
+
+We have added custom Artisan commands to simplify the creation of repositories and services:
+
+### 1. Create a new repository
+
+To create a new repository, run the following command:
+
+```bash
+php artisan make:repository {RepositoryName}
+```
+
+This command will generate a new repository class in the appropriate directory.
+
+### 2. Create a new service
+
+To create a new service, use the following command:
+
+```bash
+php artisan make:service {ServiceName}
+```
+
+This will generate a new service class, making it easier to implement business logic in a clean and modular way.
 
 ---
 
